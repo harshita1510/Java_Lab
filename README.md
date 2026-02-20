@@ -1,5 +1,5 @@
 [Program 1: Program to create  a calculator in java.](#Code1)
-[Program 2:Program to find greatest of two numbers.](#Code2)
+[Program 2: Program to find greatest of two numbers.](#Code2)
 ## Code1
 ~~~
 public class Calc {
