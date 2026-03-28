@@ -206,7 +206,7 @@ class RevArray
     System.out.println("Original Array:-");
     for(int i=0; i < n; i++)
     { 
-      System.out.println(arr[i]+" ");
+      System.out.print(arr[i]+" ");
     }
 
     System.out.println("\nReversed Array:-");
@@ -218,7 +218,7 @@ class RevArray
     }
     for(int i=0; i < n; i++)
     {
-      System.out.println(arr[i]+" ");
+      System.out.print(arr[i]+" ");
     }
   }
 }
@@ -232,4 +232,5 @@ public class MainRevArray
   }
 }
 ~~~
-<img width="367" height="433" alt="image" src="https://github.com/user-attachments/assets/5ea96baa-27d3-4428-96ce-ea99822a73f4" />
+<img width="334" height="298" alt="image" src="https://github.com/user-attachments/assets/ffc63198-b74b-42aa-a22a-4401e313066e" />
+
