@@ -56,3 +56,32 @@ public class Max {
 }
 ~~~
 <img width="484" height="226" alt="image" src="https://github.com/user-attachments/assets/889f0581-23cc-4ea6-991a-7802e6af04ce" />
+
+## Code3
+```
+import java.util.Scanner;
+public class Distance
+{
+  public static void main(String[] args)
+  {
+    Scanner sc=new Scanner(System.in);
+    int m1,m2,cm1,cm2;
+    int meter,centimeter;
+    System.out.println("Enter first Distance(meter and centimenter):");
+    m1=sc.nextInt();
+    cm1=sc.nextInt();
+    System.out.println("Enter second distance(meter and centimeter):");
+    m2=sc.nextInt();
+    cm2=sc.nextInt();
+    meter=m1+m2;
+    centimeter=cm1+cm2;
+    if(centimeter>=100)
+    {
+      meter=meter+(centimeter/100);
+      centimeter=centimeter%100;
+    }   
+    System.out.println("Total Distance:"+meter+"m "+centimeter+"cm");
+  }
+}
+```
+
