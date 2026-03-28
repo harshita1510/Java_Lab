@@ -4,6 +4,8 @@
 
 [Program 3: Program for the addition of two distances where each distance is given in meter and centimeter.](#Code3)
 
+[Program 4: Program for the addition of two distances where each distance is given in meter,centimeter and millimeters.](#Code4)
+
 ## Code1
 ~~~
 public class Calc {
@@ -61,7 +63,7 @@ public class Max {
 <img width="484" height="226" alt="image" src="https://github.com/user-attachments/assets/889f0581-23cc-4ea6-991a-7802e6af04ce" />
 
 ## Code3
-```
+~~~
 import java.util.Scanner;
 public class Distance
 {
@@ -86,6 +88,42 @@ public class Distance
     System.out.println("Total Distance:"+meter+"m "+centimeter+"cm");
   }
 }
-```
+~~~
 <img width="324" height="152" alt="image" src="https://github.com/user-attachments/assets/5be78abc-b814-4037-9474-25e70387f024" />
 
+## Code4
+~~~
+import java.util.Scanner;
+public class Distance
+{
+  public static void main(String[] args)
+  {
+    Scanner sc=new Scanner(System.in);
+    int m1,m2,cm1,cm2,mm1,mm2;
+    int meter,centimeter,millimeter;
+    System.out.println("Enter first Distance(meter and centimenter and millimeter):");
+    m1=sc.nextInt();
+    cm1=sc.nextInt();
+    mm1=sc.nextInt();
+    System.out.println("Enter second distance(meter and centimeter):");
+    m2=sc.nextInt();
+    cm2=sc.nextInt();
+    mm2=sc.nextInt();
+    meter=m1+m2;
+    centimeter=cm1+cm2;
+    millimeter=mm1+mm2;
+    if(millimeter>=10)
+    {
+      centimeter=centimeter+(millimeter/10);
+      millimeter=millimeter%10;
+    }  
+    if(centimeter>=100)
+    {
+      meter=meter+(centimeter/100);
+      centimeter=centimeter%100;
+    } 
+    System.out.println("Total Distance:"+meter+"m "+centimeter+"cm "+millimeter+"mm");
+  }
+}
+~~~
+<img width="422" height="182" alt="image" src="https://github.com/user-attachments/assets/cb1be257-a39b-4794-b739-62f376074f0e" />
