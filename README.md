@@ -8,6 +8,7 @@
 
 [Program 5: Program for the addition of two times where each time is given in hours, minutes and seconds.](#Code5)
 
+[Program 6: Program for reversing 1-D array using objects and classes.](#Code6)
 
 ## Code1
 ~~~
@@ -181,4 +182,54 @@ class Time {
 ~~~
 <img width="353" height="154" alt="image" src="https://github.com/user-attachments/assets/8b3f5a10-d330-40a5-8426-bc7df2734396" />
 
+## Code6
+~~~
+import java.util.Scanner;
 
+class RevArray
+{
+  void ReverseArray()
+  {
+    Scanner sc = new Scanner(System.in);
+    int n;
+    System.out.println("Enter size of array:");
+    n = sc.nextInt();
+    int[] arr = new int[n];
+
+    System.out.println("Enter elements of the array:\n");
+    for(int i=0 ; i < n; i++)
+    { 
+      System.out.println("Enter "+ (i+1) +"th element:");
+      arr[i] = sc.nextInt();
+    }
+
+    System.out.println("Original Array:-");
+    for(int i=0; i < n; i++)
+    { 
+      System.out.println(arr[i]+" ");
+    }
+
+    System.out.println("\nReversed Array:-");
+    for(int i=0; i < n/2; i++)
+    {
+      int temp = arr[i];
+      arr[i] = arr[n-i-1];
+      arr[n-i-1] = temp;
+    }
+    for(int i=0; i < n; i++)
+    {
+      System.out.println(arr[i]+" ");
+    }
+  }
+}
+
+public class MainRevArray
+{
+  public static void main(String[] args)
+  {
+    RevArray obj = new RevArray();
+    obj.ReverseArray();
+  }
+}
+~~~
+<img width="367" height="433" alt="image" src="https://github.com/user-attachments/assets/5ea96baa-27d3-4428-96ce-ea99822a73f4" />
