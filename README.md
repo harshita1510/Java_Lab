@@ -10,6 +10,8 @@
 
 [Program 6: Program for reversing 1-D array using objects and classes.](#Code6)
 
+[Program 7: Program for transpose of 3x3 matrix using classes and objects.](#Code7)
+
 ## Code1
 ~~~
 public class Calc {
@@ -233,4 +235,55 @@ public class MainRevArray
 }
 ~~~
 <img width="334" height="298" alt="image" src="https://github.com/user-attachments/assets/ffc63198-b74b-42aa-a22a-4401e313066e" />
+
+## Code7
+~~~
+import java.util.Scanner;
+class TransposeMatrix
+{
+  void Transpose()
+  {
+    Scanner sc = new Scanner(System.in);    
+    int[][] arr = new int[3][3];
+    System.out.println("Enter elements of 3x3 matrix:-");
+    for(int i=0; i < 3; i++)
+    {  
+      for(int j=0; j <3; j++)
+      { 
+        arr[i][j] = sc.nextInt();
+      }
+    }
+
+    System.out.println("\nOriginal Matrix:-");
+    for(int i=0; i < 3; i++)
+    {
+      for(int j=0; j < 3; j++)
+      { 
+        System.out.print(arr[i][j]+" ");
+      }
+      System.out.print("\n");
+    }
+
+    System.out.println("Transpose of Matrix:-");
+    for(int i=0; i < 3; i++)
+    { 
+      for(int j=0; j < 3; j++)
+      { 
+        System.out.print(arr[j][i]+" ");
+      }
+      System.out.print("\n");
+    }
+  }
+}
+
+public class MainTranspose
+{
+  public static void main(String[] args)
+  { 
+   TransposeMatrix obj = new TransposeMatrix();
+    obj.Transpose();
+  }
+}
+~~~
+<img width="318" height="317" alt="image" src="https://github.com/user-attachments/assets/6ed5fe0a-66a7-40f9-9d81-3687175dac78" />
 
