@@ -1,6 +1,9 @@
 [Program 1: Program to create  a calculator in java.](#Code1)
 
 [Program 2: Program to find greatest of two numbers.](#Code2)
+
+[Program 3: Program for the addition of two distances where each distance is given in meter and centimeter.](#Code3)
+
 ## Code1
 ~~~
 public class Calc {
@@ -84,4 +87,5 @@ public class Distance
   }
 }
 ```
+<img width="324" height="152" alt="image" src="https://github.com/user-attachments/assets/5be78abc-b814-4037-9474-25e70387f024" />
 
