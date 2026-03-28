@@ -4,7 +4,10 @@
 
 [Program 3: Program for the addition of two distances where each distance is given in meter and centimeter.](#Code3)
 
-[Program 4: Program for the addition of two distances where each distance is given in meter,centimeter and millimeters.](#Code4)
+[Program 4: Program for the addition of two distances where each distance is given in meter, centimeter and millimeters.](#Code4)
+
+[Program 5: Program for the addition of two times where each time is given in hours, minutes and seconds.](#Code5)
+
 
 ## Code1
 ~~~
@@ -101,11 +104,11 @@ public class Distance
     Scanner sc=new Scanner(System.in);
     int m1,m2,cm1,cm2,mm1,mm2;
     int meter,centimeter,millimeter;
-    System.out.println("Enter first Distance(meter and centimenter and millimeter):");
+    System.out.println("Enter first Distance(meter,centimenter and millimeter):");
     m1=sc.nextInt();
     cm1=sc.nextInt();
     mm1=sc.nextInt();
-    System.out.println("Enter second distance(meter and centimeter):");
+    System.out.println("Enter second distance(meter,centimeter and millimeter):");
     m2=sc.nextInt();
     cm2=sc.nextInt();
     mm2=sc.nextInt();
@@ -126,4 +129,56 @@ public class Distance
   }
 }
 ~~~
-<img width="422" height="182" alt="image" src="https://github.com/user-attachments/assets/cb1be257-a39b-4794-b739-62f376074f0e" />
+<img width="408" height="173" alt="image" src="https://github.com/user-attachments/assets/7138e3b0-2c5b-47bc-b9d2-e02854b5741a" />
+
+## Code5
+~~~
+import java.util.Scanner;
+
+class Time {
+    int hours, minutes,seconds;
+
+    void addTime(int h1, int m1, int h2, int m2, int sec1, int sec2) {
+        hours = h1 + h2;
+        minutes = m1 + m2;
+        seconds= sec1 + sec2;
+        
+        if (seconds >= 60){
+            minutes =  minutes + seconds / 60;
+            seconds = seconds % 60;
+        } 
+
+        if (minutes >= 60) {
+            hours = hours + minutes / 60;
+            minutes = minutes % 60;
+        }
+    }
+
+    void display() {
+        System.out.println("Total Time = " + hours + " hours " + minutes + " minutes " + seconds + " seconds");
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        int h1, m1, h2, m2, sec1, sec2;
+
+        System.out.print("Enter first time (hours,minutes and seconds): ");
+        h1 = sc.nextInt();
+        m1 = sc.nextInt();
+        sec1=sc.nextInt();
+        
+        System.out.print("Enter second time (hours,minutes and seconds): ");
+        h2 = sc.nextInt();
+        m2 = sc.nextInt();
+        sec2=sc.nextInt();
+        
+        Time t = new Time();   // object creation
+        t.addTime(h1, m1, h2, m2, sec1, sec2);
+        t.display();
+    }
+}
+~~~
+<img width="353" height="154" alt="image" src="https://github.com/user-attachments/assets/8b3f5a10-d330-40a5-8426-bc7df2734396" />
+
+
