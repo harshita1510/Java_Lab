@@ -16,6 +16,8 @@
 
 [Program 9: Program for addition of two 3x3 matrices using classes and objects.](#Code9)
 
+[Program 10: Program for sum of all elements in each row, each column and the diagonal in a 3x3 matrix  using classes and objects.](#Code10)
+
 ## Code1
 ~~~
 public class Calc {
@@ -373,7 +375,7 @@ public class MatrixMultiplication
 ~~~
 <img width="331" height="413" alt="image" src="https://github.com/user-attachments/assets/9e1b4a8c-5ba4-473a-b797-2ed9ac171451" />
 
-## Code8
+## Code9
 ~~~
 import java.util.Scanner;
 class Addition
@@ -450,3 +452,78 @@ public class MatrixAddition
 }
 ~~~
 <img width="353" height="391" alt="image" src="https://github.com/user-attachments/assets/2d5a6824-563c-40b0-bd97-01ce87b041d2" />
+
+## Code10
+~~~
+import java.util.Scanner;
+class Operation 
+{
+    void operatematrix()
+    {
+        Scanner sc = new Scanner(System.in);
+        int[][] arr = new int[3][3];
+
+        System.out.println("Enter elements of 3x3 matrix:-");
+        for(int i=0; i < 3; i++)
+        { 
+            for(int j=0; j < 3; j++)
+            {
+                arr[i][j]=sc.nextInt();
+            }
+        }
+
+        System.out.println("Original matrix:-");
+        for(int i=0; i < 3; i++)
+       { 
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr[i][j]+" ");
+         }
+          System.out.print("\n");
+       }
+
+        System.out.println("\nSum of elements in rows:-");
+        for(int i=0; i < 3; i++)
+        {
+            int sum = 0;
+            for( int j=0; j < 3; j++)
+            {
+                sum += arr[i][j];
+            }
+            System.out.println("Sum of elements in "+(i+1)+"th row: "+sum);
+        }
+
+        System.out.println("\nSum of elements in columns:-");
+        for(int i=0; i < 3; i++)
+        {
+            int sum = 0;
+            for( int j=0; j < 3; j++)
+            {
+                sum += arr[j][i];
+            }
+            System.out.println("Sum of elements in "+(i+1)+"th coulumn: "+sum);
+        }
+
+        System.out.println("\nSum of elements in diagonal:-");
+        int sum = 0;
+        for(int i=0; i < 3; i++)
+        {
+            sum += arr[i][i];
+        }
+        System.out.println("Sum of elements in the diagonal: "+sum);
+
+
+    }
+}
+
+public class MatrixOperation
+{
+    public static void main(String[] args)
+    {
+        Operation obj = new Operation();
+        obj.operatematrix();
+    }
+}
+~~~
+<img width="360" height="394" alt="image" src="https://github.com/user-attachments/assets/6fa503ca-3a0d-49fc-8322-fa72746f3ea7" />
+
