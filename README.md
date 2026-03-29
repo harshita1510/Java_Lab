@@ -12,6 +12,8 @@
 
 [Program 7: Program for transpose of 3x3 matrix using classes and objects.](#Code7)
 
+[Program 8: Program for multiplication of two 3x3 matrices using classes and objects.](#Code8)
+
 ## Code1
 ~~~
 public class Calc {
@@ -287,3 +289,84 @@ public class MainTranspose
 ~~~
 <img width="318" height="317" alt="image" src="https://github.com/user-attachments/assets/6ed5fe0a-66a7-40f9-9d81-3687175dac78" />
 
+## Code8
+~~~
+import java.util.Scanner;
+class Multiplication
+{ 
+   void mulmatrix()
+   { 
+      Scanner sc = new Scanner(System.in);
+      int[][] arr1 = new int[3][3];
+      int[][] arr2 = new int[3][3];
+      int[][] arr = new int[3][3];
+
+      System.out.println("Enter elements of first matrix:-");
+      for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            arr1[i][j]=sc.nextInt();
+          }
+       }
+      System.out.println("Enter elements of second matrix:-");
+      for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            arr2[i][j]=sc.nextInt();
+          }
+       }
+
+       System.out.println("Original first matrix:-");
+       for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr1[i][j]+" ");
+          }
+          System.out.print("\n");
+       }
+       System.out.println("Original second matrix:-");
+       for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr2[i][j]+" ");
+          }
+          System.out.print("\n");
+       }
+
+       System.out.println("Matrix Multiplication:-");
+       for(int i=0; i < 3; i++)
+       {
+          for(int j=0; j < 3; j++)
+          {
+             arr[i][j]=0;
+             for(int k=0; k < 3; k++)
+             {
+                arr[i][j] += arr1[i][k] * arr2[k][j];
+             }
+          }
+       }
+       for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr[i][j]+" ");
+          }
+          System.out.print("\n");
+       }
+   }
+}
+
+public class MatrixMultiplication
+{
+   public static void main(String[] args)
+   {
+      Multiplication obj = new Multiplication();
+      obj.mulmatrix();
+   }
+}
+~~~
+<img width="331" height="413" alt="image" src="https://github.com/user-attachments/assets/9e1b4a8c-5ba4-473a-b797-2ed9ac171451" />
