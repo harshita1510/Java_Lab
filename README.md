@@ -14,6 +14,8 @@
 
 [Program 8: Program for multiplication of two 3x3 matrices using classes and objects.](#Code8)
 
+[Program 9: Program for addition of two 3x3 matrices using classes and objects.](#Code9)
+
 ## Code1
 ~~~
 public class Calc {
@@ -370,3 +372,81 @@ public class MatrixMultiplication
 }
 ~~~
 <img width="331" height="413" alt="image" src="https://github.com/user-attachments/assets/9e1b4a8c-5ba4-473a-b797-2ed9ac171451" />
+
+## Code8
+~~~
+import java.util.Scanner;
+class Addition
+{
+   void additionmatrix()
+   {
+      Scanner sc = new Scanner(System.in);
+      int[][] arr1 = new int[3][3];
+      int[][] arr2 = new int[3][3];
+      int[][] arr = new int[3][3];
+
+      System.out.println("Enter elements of first matrix:-");
+      for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            arr1[i][j]=sc.nextInt();
+         }
+      }
+      System.out.println("Enter elements of second matrix:-");
+      for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            arr2[i][j]=sc.nextInt();
+         }
+      }
+
+      System.out.println("Original first matrix:-");
+      for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr1[i][j]+" ");
+         }
+          System.out.print("\n");
+      }
+      System.out.println("Original second matrix:-");
+      for(int i=0; i < 3; i++)
+      { 
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr2[i][j]+" ");
+         }
+          System.out.print("\n");
+      }
+
+      System.out.println("Addition of two matrices:-");
+      for(int i=0; i < 3; i++)
+      {
+         for(int j=0; j < 3; j++)
+         {
+            arr[i][j] = arr1[i][j] + arr2[i][j];
+         }
+      }
+      for(int i=0; i < 3; i++)
+      {
+         for(int j=0; j < 3; j++)
+         {
+            System.out.print(arr[i][j]+" ");
+         }
+         System.out.print("\n");
+      }
+   }
+}
+
+public class MatrixAddition
+{
+   public static void main(String[] args)
+   {
+      Addition obj = new Addition();
+      obj.additionmatrix();
+   }
+}
+~~~
+<img width="353" height="391" alt="image" src="https://github.com/user-attachments/assets/2d5a6824-563c-40b0-bd97-01ce87b041d2" />
