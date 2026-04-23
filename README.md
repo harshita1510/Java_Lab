@@ -48,6 +48,8 @@
 
 [Program 21: To test the range of age of one student, write a program using a user-defined exception.](#Code21)
 
+[Program 22: Make a registration form with 10 elements and send the data to the database (use JDBC connectivity).](#Code22)
+
 ## Code1
 ~~~
 public class Calc {
@@ -1401,3 +1403,200 @@ public class Main {
 ~~~
 <img width="313" height="73" alt="image" src="https://github.com/user-attachments/assets/4d31a2f5-c9b6-4967-b2fc-f786c11749eb" />
 
+## Code22
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class Main extends JFrame implements ActionListener {
+
+    JTextField t1, t2, t4, t5, t6, t7, t8, t9;
+    JRadioButton r1, r2;
+    ButtonGroup bg;
+    JPasswordField p1;
+    JButton submit, reset;
+
+    Connection con;
+    PreparedStatement pst;
+
+    Main() {
+        setTitle("Registration Form (Oracle)");
+        setSize(450, 550);
+        setLayout(null);
+
+        JLabel l1 = new JLabel("Name");
+        l1.setBounds(50, 30, 100, 25);
+
+        JLabel l2 = new JLabel("Father Name");
+        l2.setBounds(50, 70, 100, 25);
+
+        JLabel l3 = new JLabel("Gender");
+        l3.setBounds(50, 110, 100, 25);
+
+        JLabel l4 = new JLabel("Age");
+        l4.setBounds(50, 150, 100, 25);
+
+        JLabel l5 = new JLabel("Address");
+        l5.setBounds(50, 190, 100, 25);
+
+        JLabel l6 = new JLabel("Email");
+        l6.setBounds(50, 230, 100, 25);
+
+        JLabel l7 = new JLabel("Mobile");
+        l7.setBounds(50, 270, 100, 25);
+
+        JLabel l8 = new JLabel("Course");
+        l8.setBounds(50, 310, 100, 25);
+
+        JLabel l9 = new JLabel("Username");
+        l9.setBounds(50, 350, 100, 25);
+
+        JLabel l10 = new JLabel("Password");
+        l10.setBounds(50, 390, 100, 25);
+
+        t1 = new JTextField();
+        t1.setBounds(180, 30, 150, 25);
+
+        t2 = new JTextField();
+        t2.setBounds(180, 70, 150, 25);
+
+        t4 = new JTextField();
+        t4.setBounds(180, 150, 150, 25);
+
+        t5 = new JTextField();
+        t5.setBounds(180, 190, 150, 25);
+
+        t6 = new JTextField();
+        t6.setBounds(180, 230, 150, 25);
+
+        t7 = new JTextField();
+        t7.setBounds(180, 270, 150, 25);
+
+        t8 = new JTextField();
+        t8.setBounds(180, 310, 150, 25);
+
+        t9 = new JTextField();
+        t9.setBounds(180, 350, 150, 25);
+
+        r1 = new JRadioButton("Male");
+        r1.setBounds(180, 110, 70, 25);
+
+        r2 = new JRadioButton("Female");
+        r2.setBounds(250, 110, 80, 25);
+
+        bg = new ButtonGroup();
+        bg.add(r1);
+        bg.add(r2);
+
+        p1 = new JPasswordField();
+        p1.setBounds(180, 390, 150, 25);
+
+        submit = new JButton("Submit");
+        submit.setBounds(80, 440, 100, 30);
+
+        reset = new JButton("Reset");
+        reset.setBounds(220, 440, 100, 30);
+
+        submit.addActionListener(this);
+        reset.addActionListener(this);
+
+        add(l1);
+        add(t1);
+        add(l2);
+        add(t2);
+        add(l3);
+        add(r1);
+        add(r2);
+        add(l4);
+        add(t4);
+        add(l5);
+        add(t5);
+        add(l6);
+        add(t6);
+        add(l7);
+        add(t7);
+        add(l8);
+        add(t8);
+        add(l9);
+        add(t9);
+        add(l10);
+        add(p1);
+        add(submit);
+        add(reset);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == submit) {
+            try {
+                Class.forName("oracle.jdbc.OracleDriver");
+
+                con = DriverManager.getConnection(
+                        "jdbc:oracle:thin:@localhost:1521:xe",
+                        "System",
+                        "123");
+
+                String gender = "";
+                if (r1.isSelected()) {
+                    gender = "Male";
+                } else if (r2.isSelected()) {
+                    gender = "Female";
+                }
+
+                String sql = "INSERT INTO registrationn VALUES (reg_seq.NEXTVAL, ?,?,?,?,?,?,?,?,?,?)";
+
+                pst = con.prepareStatement(sql);
+
+                pst.setString(1, t1.getText());
+                pst.setString(2, t2.getText());
+                pst.setString(3, gender);
+                pst.setInt(4, Integer.parseInt(t4.getText()));
+                pst.setString(5, t5.getText());
+                pst.setString(6, t6.getText());
+                pst.setString(7, t7.getText());
+                pst.setString(8, t8.getText());
+                pst.setString(9, t9.getText());
+                pst.setString(10, new String(p1.getPassword()));
+
+                int x = pst.executeUpdate();
+
+                if (x > 0) {
+                    JOptionPane.showMessageDialog(this, "Data Inserted Successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Insertion Failed!");
+                }
+
+                pst.close();
+                con.close();
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Age must be a number");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+        }
+
+        if (e.getSource() == reset) {
+            t1.setText("");
+            t2.setText("");
+            t4.setText("");
+            t5.setText("");
+            t6.setText("");
+            t7.setText("");
+            t8.setText("");
+            t9.setText("");
+            p1.setText("");
+            bg.clearSelection();
+        }
+    }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+}
+~~~
+<img width="326" height="404" alt="image" src="https://github.com/user-attachments/assets/3b22af4a-f6a3-494d-a366-34b09a92f954" />
