@@ -18,6 +18,28 @@
 
 [Program 10: Program for sum of all elements in each row, each column and the diagonal in a 3x3 matrix  using classes and objects.](#Code10)
 
+[Program 11a: Collect the code from the internet for any five programs in the C language and convert them to Java. (Factorial).](#Code11a)
+
+[Program 11b: Collect the code from the internet for any five programs in the C language and convert them to Java. (Armstrong).](#Code11b)
+
+[Program 11c: Collect the code from the internet for any five programs in the C language and convert them to Java. (Palindrome).](#Code11c)
+
+[Program 11d: Collect the code from the internet for any five programs in the C language and convert them to Java. (Fibonacci).](#Code11d)
+
+[Program 11e: Collect the code from the internet for any five programs in the C language and convert them to Java. (Pattern).](#Code11e)
+
+[Program 12: Write a program using three classes to print 1–100, 1–100, 1–100 without a thread, and analyse the output, and repeat the same program using the Runnable interface.](#Code12)
+
+[Program 13: Write a program using three classes to print 1–100, 1–100, 1–100 with a thread and analyse the output, and repeat the same program using the Runnable interface.](#Code13)
+
+[Program 14:  Using the concept of multithreading, the output of all three threads must be synchronised (use the join method).](#Code14)
+
+[Program 15: Addition of 2 numbers using Swing.](#Code15)
+
+[Program 16: Make one calculator in Swing.](#Code16)
+
+[Program 17: Matrix Addition using swing class.](#Code17)
+
 ## Code1
 ~~~
 public class Calc {
@@ -526,4 +548,533 @@ public class MatrixOperation
 }
 ~~~
 <img width="360" height="394" alt="image" src="https://github.com/user-attachments/assets/6fa503ca-3a0d-49fc-8322-fa72746f3ea7" />
+
+## Code11a
+~~~
+import java.util.Scanner;
+
+class Factorial {
+    public static void main(String[] args) {
+        int n, fact = 1;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            fact *= i;
+        }
+
+        System.out.println("Factorial = " + fact);
+    }
+}
+~~~
+<img width="104" height="43" alt="image" src="https://github.com/user-attachments/assets/1e4e1a1f-e961-46c9-930f-c7c931d48295" />
+
+## Code11b
+~~~
+import java.util.Scanner;
+
+class Armstrong {
+    public static void main(String[] args) {
+        int n, temp, rem, sum = 0;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        n = sc.nextInt();
+
+        temp = n;
+
+        while (n > 0) {
+            rem = n % 10;
+            sum += rem * rem * rem;
+            n = n / 10;
+        }
+
+        if (temp == sum)
+            System. out.println("Armstrong Number");
+        else
+            System. out.println("Not an Armstrong Number");
+    }
+}
+~~~
+<img width="251" height="52" alt="image" src="https://github.com/user-attachments/assets/fad92527-4d69-4fcb-80de-dd067c2b4878" />
+
+## Code11c
+~~~
+import java.util.Scanner;
+
+class Palindrome {
+    public static void main(String[] args) {
+        int n, rev = 0, rem, temp;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        n = sc.nextInt();
+
+        temp = n;
+
+        while (n > 0) {
+            rem = n % 10;
+            rev = rev * 10 + rem;
+            n = n / 10;
+        }
+
+        if (temp == rev)
+            System. out.println("Palindrome Number");
+        else
+            System. out.println("Not a Palindrome Number");
+    }
+}
+~~~
+<img width="254" height="50" alt="image" src="https://github.com/user-attachments/assets/575bfc20-5047-4688-af37-a616e5698e0c" />
+
+## Code11d
+~~~
+import java.util.Scanner;
+
+class Fibonacci {
+    public static void main(String[] args) {
+        int n, a = 0, b = 1, c;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of terms: ");
+        n = sc.nextInt();
+
+        System.out.println("Fibonacci Series:");
+        System.out.print(a + " " + b + " ");
+
+        for (int i = 3; i <= n; i++) {
+            c = a + b;
+            System.out.print(c + " ");
+            a = b;
+            b = c;
+        }
+    }
+}
+~~~
+<img width="266" height="67" alt="image" src="https://github.com/user-attachments/assets/0aefc0e1-4ae7-4858-8124-1371c923c075" />
+
+## Code11e
+~~~
+class Pattern {
+    public static void main(String[] args) {
+
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+~~~
+<img width="227" height="93" alt="image" src="https://github.com/user-attachments/assets/78034eab-287c-442b-8f03-63f1662874cf" />
+
+## Code12
+~~~
+class PrintOneToHundred {
+    void display() {
+        System. out.println("Printing 1 to 100:");
+        for (int i = 1; i <= 100; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+class PrintHundredToOne {
+    void display() {
+        System. out.println("Printing 100 to 1:");
+        for (int i = 100; i >= 1; i--) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+class PrintOneToHundredAgain {
+    void display() {
+        System. out.println("Printing 1 to 100 again:");
+        for (int i = 1; i <= 100; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PrintOneToHundred obj1 = new PrintOneToHundred();
+        PrintHundredToOne obj2 = new PrintHundredToOne();
+        PrintOneToHundredAgain obj3 = new PrintOneToHundredAgain();
+
+        obj1.display();
+        obj2.display();
+        obj3.display();
+    }
+}
+~~~
+<img width="817" height="161" alt="image" src="https://github.com/user-attachments/assets/d8386611-e01b-4d51-bb2a-f9430fd13abf" />
+
+## Code13
+~~~
+class ThreadOne extends Thread {
+    public void run() {
+        System. out.println("Thread 1: Printing 1 to 100");
+        for (int i = 1; i <= 100; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+class ThreadTwo extends Thread {
+    public void run() {
+        System. out.println("Thread 2: Printing 100 to 1");
+        for (int i = 100; i >= 1; i--) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+class ThreadThree extends Thread {
+    public void run() {
+        System. out.println("Thread 3: Printing 1 to 100");
+        for (int i = 1; i <= 100; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        ThreadOne t1 = new ThreadOne();
+        ThreadTwo t2 = new ThreadTwo();
+        ThreadThree t3 = new ThreadThree();
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
+~~~
+<img width="828" height="171" alt="image" src="https://github.com/user-attachments/assets/89dcd5f7-537a-46af-81e4-62702686b240" />
+
+## Code14
+~~~
+class ThreadOne extends Thread {
+    public void run() {
+        System. out.println("Thread 1: Printing 1 to 100");
+        for (int i = 1; i <= 100; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+class ThreadTwo extends Thread {
+    public void run() {
+        System. out.println("Thread 2: Printing 100 to 1");
+        for (int i = 100; i >= 1; i--) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+class ThreadThree extends Thread {
+    public void run() {
+        System. out.println("Thread 3: Printing 1 to 100");
+        for (int i = 1; i <= 100; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        ThreadOne t1 = new ThreadOne();
+        ThreadTwo t2 = new ThreadTwo();
+        ThreadThree t3 = new ThreadThree();
+
+        try {
+            t1.start();
+            t1.join();   
+
+            t2.start();
+            t2.join();  
+
+            t3.start();
+            t3.join();  
+
+        } catch (InterruptedException e) {
+            System. out.println("Exception: " + e);
+        }
+    }
+}
+~~~
+<img width="827" height="146" alt="image" src="https://github.com/user-attachments/assets/6387f6a8-5201-4ea0-8680-f4ab2c6544db" />
+
+## Code15
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Main extends JFrame implements ActionListener {
+    JLabel l1, l2, l3;
+    JTextField t1, t2, t3;
+    JButton b1;
+
+    Main() {
+        l1 = new JLabel("Enter First Number:");
+        l2 = new JLabel("Enter Second Number:");
+        l3 = new JLabel("Result:");
+
+        t1 = new JTextField();
+        t2 = new JTextField();
+        t3 = new JTextField();
+        t3.setEditable(false);
+
+        b1 = new JButton("Add");
+        b1.addActionListener(this);
+
+        l1.setBounds(50, 50, 150, 30);
+        t1.setBounds(200, 50, 150, 30);
+
+        l2.setBounds(50, 100, 150, 30);
+        t2.setBounds(200, 100, 150, 30);
+
+        l3.setBounds(50, 150, 150, 30);
+        t3.setBounds(200, 150, 150, 30);
+
+        b1.setBounds(140, 220, 100, 30);
+
+        add(l1); add(t1);
+        add(l2); add(t2);
+        add(l3); add(t3);
+        add(b1);
+
+        setTitle("Addition of Two Numbers");
+        setSize(450, 350);
+        setLayout(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        int num1 = Integer.parseInt(t1.getText());
+        int num2 = Integer.parseInt(t2.getText());
+        int sum = num1 + num2;
+        t3.setText(String.valueOf(sum));
+    }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+}
+~~~
+<img width="326" height="259" alt="image" src="https://github.com/user-attachments/assets/7fbd92f9-e417-497e-95d1-357a6e2e1019" />
+
+## Code16
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Main extends JFrame implements ActionListener {
+    JLabel l1, l2, l3;
+    JTextField t1, t2, t3;
+    JButton b1, b2, b3, b4, b5;
+
+    Main() {
+        l1 = new JLabel("First Number:");
+        l2 = new JLabel("Second Number:");
+        l3 = new JLabel("Result:");
+
+        t1 = new JTextField();
+        t2 = new JTextField();
+        t3 = new JTextField();
+        t3.setEditable(false);
+
+        b1 = new JButton("Add");
+        b2 = new JButton("Sub");
+        b3 = new JButton("Mul");
+        b4 = new JButton("Div");
+        b5 = new JButton("Clear");
+
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
+
+        l1.setBounds(50, 50, 100, 30);
+        t1.setBounds(170, 50, 150, 30);
+
+        l2.setBounds(50, 100, 100, 30);
+        t2.setBounds(170, 100, 150, 30);
+
+        l3.setBounds(50, 150, 100, 30);
+        t3.setBounds(170, 150, 150, 30);
+
+        b1.setBounds(30, 220, 70, 30);
+        b2.setBounds(110, 220, 70, 30);
+        b3.setBounds(190, 220, 70, 30);
+        b4.setBounds(270, 220, 70, 30);
+        b5.setBounds(150, 270, 80, 30);
+
+        add(l1); add(t1);
+        add(l2); add(t2);
+        add(l3); add(t3);
+        add(b1); add(b2); add(b3); add(b4); add(b5);
+
+        setTitle("Calculator Using Swing");
+        setSize(400, 380);
+        setLayout(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            double num1 = Double.parseDouble(t1.getText());
+            double num2 = Double.parseDouble(t2.getText());
+            double result = 0;
+
+            if (e.getSource() == b1) {
+                result = num1 + num2;
+            } else if (e.getSource() == b2) {
+                result = num1 - num2;
+            } else if (e.getSource() == b3) {
+                result = num1 * num2;
+            } else if (e.getSource() == b4) {
+                if (num2 == 0) {
+                    JOptionPane.showMessageDialog(this, "Division by zero is not allowed");
+                    return;
+                }
+                result = num1 / num2;
+            } else if (e.getSource() == b5) {
+                t1.setText("");
+                t2.setText("");
+                t3.setText("");
+                return;
+            }
+
+            t3.setText(String.valueOf(result));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers");
+        }
+    }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+}
+~~~
+<img width="290" height="281" alt="image" src="https://github.com/user-attachments/assets/2b7899df-1d3c-4fb3-b8d6-1b1a9f72fa44" />
+
+## Code17
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Main extends JFrame implements ActionListener {
+
+    JTextField a11, a12, a21, a22;
+    JTextField b11, b12, b21, b22;
+    JTextField r11, r12, r21, r22;
+    JButton addBtn, clearBtn;
+
+    Main() {
+        setTitle("Matrix Addition (2x2)");
+        setSize(420, 320);
+        setLayout(null);
+
+        JLabel la = new JLabel("Matrix A");
+        la.setBounds(60, 10, 100, 20);
+        add(la);
+
+        a11 = new JTextField(); a11.setBounds(40, 40, 50, 30);
+        a12 = new JTextField(); a12.setBounds(100, 40, 50, 30);
+        a21 = new JTextField(); a21.setBounds(40, 80, 50, 30);
+        a22 = new JTextField(); a22.setBounds(100, 80, 50, 30);
+
+        JLabel lb = new JLabel("Matrix B");
+        lb.setBounds(250, 10, 100, 20);
+        add(lb);
+
+        b11 = new JTextField(); b11.setBounds(230, 40, 50, 30);
+        b12 = new JTextField(); b12.setBounds(290, 40, 50, 30);
+        b21 = new JTextField(); b21.setBounds(230, 80, 50, 30);
+        b22 = new JTextField(); b22.setBounds(290, 80, 50, 30);
+
+        JLabel lr = new JLabel("Result");
+        lr.setBounds(150, 120, 100, 20);
+        add(lr);
+
+        r11 = new JTextField(); r11.setBounds(120, 150, 50, 30); r11.setEditable(false);
+        r12 = new JTextField(); r12.setBounds(180, 150, 50, 30); r12.setEditable(false);
+        r21 = new JTextField(); r21.setBounds(120, 190, 50, 30); r21.setEditable(false);
+        r22 = new JTextField(); r22.setBounds(180, 190, 50, 30); r22.setEditable(false);
+
+        addBtn = new JButton("Add");
+        clearBtn = new JButton("Clear");
+        addBtn.setBounds(90, 240, 80, 30);
+        clearBtn.setBounds(200, 240, 80, 30);
+
+        addBtn.addActionListener(this);
+        clearBtn.addActionListener(this);
+
+        add(a11); add(a12); add(a21); add(a22);
+        add(b11); add(b12); add(b21); add(b22);
+        add(r11); add(r12); add(r21); add(r22);
+        add(addBtn); add(clearBtn);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addBtn) {
+            try {
+                int A11 = Integer.parseInt(a11.getText());
+                int A12 = Integer.parseInt(a12.getText());
+                int A21 = Integer.parseInt(a21.getText());
+                int A22 = Integer.parseInt(a22.getText());
+
+                int B11 = Integer.parseInt(b11.getText());
+                int B12 = Integer.parseInt(b12.getText());
+                int B21 = Integer.parseInt(b21.getText());
+                int B22 = Integer.parseInt(b22.getText());
+
+                r11.setText(String.valueOf(A11 + B11));
+                r12.setText(String.valueOf(A12 + B12));
+                r21.setText(String.valueOf(A21 + B21));
+                r22.setText(String.valueOf(A22 + B22));
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Enter valid integers");
+            }
+        }
+
+        if (e.getSource() == clearBtn) {
+            JTextField[] fields = {
+                a11,a12,a21,a22, b11,b12,b21,b22, r11,r12,r21,r22
+            };
+            for (JTextField f: fields) f.setText("");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new Main());
+    }
+}
+~~~
+<img width="311" height="240" alt="image" src="https://github.com/user-attachments/assets/4c595c82-f986-4004-bf8a-9853ca5bae00" />
 
