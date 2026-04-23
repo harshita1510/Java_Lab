@@ -40,6 +40,14 @@
 
 [Program 17: Matrix Addition using swing class.](#Code17)
 
+[Program 18: Create one JFrame with 10 buttons on it. After clicking on each button, a new structure is created (Circle, oval, rectangle, etc).](#Code18)
+
+[Program 19: Just using mouse events creates a frame like a paint brush with selection of colour and width.](#Code19)
+
+[Program 20: Create one small array of size 5, apply array out of bounds exception using try-catch, give a proper message in catch, and demonstrate the exception exactly in the same fashion. Demonstrate arithmetic exception also.](#Code20)
+
+[Program 21: To test the range of age of one student, write a program using a user-defined exception.](#Code21)
+
 ## Code1
 ~~~
 public class Calc {
@@ -1077,4 +1085,319 @@ public class Main extends JFrame implements ActionListener {
 }
 ~~~
 <img width="311" height="240" alt="image" src="https://github.com/user-attachments/assets/4c595c82-f986-4004-bf8a-9853ca5bae00" />
+
+## Code18
+~~~
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class ShapePanel extends JPanel {
+    String shape = "";
+
+    public void setShape(String shape) {
+        this.shape = shape;
+        repaint();
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        if (shape.equals("Line")) {
+            g.drawLine(50, 50, 200, 50);
+        } 
+        else if (shape.equals("Rectangle")) {
+            g.drawRect(50, 50, 120, 80);
+        } 
+        else if (shape.equals("Square")) {
+            g.drawRect(50, 50, 100, 100);
+        } 
+        else if (shape.equals("Oval")) {
+            g.drawOval(50, 50, 150, 100);
+        } 
+        else if (shape.equals("Circle")) {
+            g.drawOval(50, 50, 100, 100);
+        } 
+        else if (shape.equals("RoundRect")) {
+            g.drawRoundRect(50, 50, 150, 100, 30, 30);
+        } 
+        else if (shape.equals("Arc")) {
+            g.drawArc(50, 50, 150, 100, 0, 180);
+        } 
+        else if (shape.equals("Triangle")) {
+            int x[] = {100, 50, 150};
+            int y[] = {50, 150, 150};
+            g.drawPolygon(x, y, 3);
+        } 
+        else if (shape.equals("Polygon")) {
+            int x[] = {100, 150, 130, 70, 50};
+            int y[] = {50, 90, 150, 150, 90};
+            g.drawPolygon(x, y, 5);
+        } 
+        else if (shape.equals("Clear")) {
+        }
+    }
+}
+
+public class Main extends JFrame implements ActionListener {
+    JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
+    ShapePanel panel;
+
+    Main() {
+        setTitle("Shapes using 10 Buttons");
+        setSize(700, 500);
+        setLayout(null);
+
+        panel = new ShapePanel();
+        panel.setBounds(200, 30, 450, 400);
+        panel.setBackground(Color.WHITE);
+
+        b1 = new JButton("Line");
+        b2 = new JButton("Rectangle");
+        b3 = new JButton("Square");
+        b4 = new JButton("Oval");
+        b5 = new JButton("Circle");
+        b6 = new JButton("RoundRect");
+        b7 = new JButton("Arc");
+        b8 = new JButton("Triangle");
+        b9 = new JButton("Polygon");
+        b10 = new JButton("Clear");
+
+        JButton[] buttons = {b1, b2, b3, b4, b5, b6, b7, b8, b9, b10};
+
+        int y = 30;
+        for (JButton b: buttons) {
+            b.setBounds(30, y, 130, 30);
+            b.addActionListener(this);
+            add(b);
+            y += 35;
+        }
+
+        add(panel);
+
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String cmd = e.getActionCommand();
+        panel.setShape(cmd);
+    }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+}
+~~~
+<img width="514" height="370" alt="image" src="https://github.com/user-attachments/assets/ddcee9e1-a64a-4469-9f1e-90d0c19ab99a" />
+
+## Code19
+~~~
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+class DrawPoint {
+    int x, y, size;
+    Color color;
+
+    DrawPoint(int x, int y, Color color, int size) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = size;
+    }
+}
+
+class PaintPanel extends JPanel implements MouseMotionListener {
+    ArrayList<DrawPoint> points = new ArrayList<>();
+    Color currentColor = Color.BLACK;
+    int brushSize = 5;
+
+    PaintPanel() {
+        setBackground(Color.WHITE);
+        addMouseMotionListener(this);
+    }
+
+    public void setCurrentColor(Color c) {
+        currentColor = c;
+    }
+
+    public void setBrushSize(int size) {
+        brushSize = size;
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        for (DrawPoint p: points) {
+            g.setColor(p.color);
+            g.fillOval(p.x, p.y, p.size, p.size);
+        }
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        points.add(new DrawPoint(e.getX(), e.getY(), currentColor, brushSize));
+        repaint();
+    }
+
+    public void mouseMoved(MouseEvent e) {
+    }
+
+    public void clearCanvas() {
+        points.clear();
+        repaint();
+    }
+}
+
+//Main
+
+public class Main extends JFrame implements ActionListener {
+    JButton redBtn, blueBtn, greenBtn, blackBtn, clearBtn;
+    JComboBox<String> widthBox;
+    PaintPanel panel;
+
+    Main() {
+        setTitle("Paint Brush Program");
+        setSize(800, 600);
+        setLayout(null);
+
+        redBtn = new JButton("Red");
+        blueBtn = new JButton("Blue");
+        greenBtn = new JButton("Green");
+        blackBtn = new JButton("Black");
+        clearBtn = new JButton("Clear");
+
+        String widths[] = {"5", "10", "15", "20", "25"};
+        widthBox = new JComboBox<>(widths);
+
+        redBtn.setBounds(20, 20, 80, 30);
+        blueBtn.setBounds(110, 20, 80, 30);
+        greenBtn.setBounds(200, 20, 80, 30);
+        blackBtn.setBounds(290, 20, 80, 30);
+        clearBtn.setBounds(380, 20, 80, 30);
+        widthBox.setBounds(480, 20, 80, 30);
+
+        redBtn.addActionListener(this);
+        blueBtn.addActionListener(this);
+        greenBtn.addActionListener(this);
+        blackBtn.addActionListener(this);
+        clearBtn.addActionListener(this);
+        widthBox.addActionListener(this);
+
+        add(redBtn);
+        add(blueBtn);
+        add(greenBtn);
+        add(blackBtn);
+        add(clearBtn);
+        add(widthBox);
+
+        panel = new PaintPanel();
+        panel.setBounds(20, 70, 740, 470);
+        add(panel);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == redBtn) {
+            panel.setCurrentColor(Color.RED);
+        } else if (e.getSource() == blueBtn) {
+            panel.setCurrentColor(Color.BLUE);
+        } else if (e.getSource() == greenBtn) {
+            panel.setCurrentColor(Color.GREEN);
+        } else if (e.getSource() == blackBtn) {
+            panel.setCurrentColor(Color.BLACK);
+        } else if (e.getSource() == clearBtn) {
+            panel.clearCanvas();
+        } else if (e.getSource() == widthBox) {
+            int size = Integer.parseInt((String) widthBox.getSelectedItem());
+            panel.setBrushSize(size);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+}
+~~~
+<img width="587" height="445" alt="image" src="https://github.com/user-attachments/assets/770b31db-74bf-47e7-88ae-b69295a8bd6b" />
+
+## Code20
+~~~
+public class Main {
+    public static void main(String[] args) {
+
+        try {
+            int arr[] = new int[5];
+
+            arr[0] = 10;
+            arr[1] = 20;
+            arr[2] = 30;
+            arr[3] = 40;
+            arr[4] = 50;
+
+            System.out.println("Accessing array elements:");
+            for (int i = 0; i <= 5; i++) {  
+                System.out.println("Element at index " + i + " = " + arr[i]);
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System. out.println("Array Index Out Of Bounds Exception caught!");
+            System. out.println("You tried to access an invalid index in the array.");
+        }
+
+        try {
+            int a = 10;
+            int b = 0;
+
+            int result = a / b;  
+            System.out.println("Result = " + result);
+
+        } catch (ArithmeticException e) {
+            System. out.println("Arithmetic Exception caught!");
+            System. out.println("Division by zero is not allowed.");
+        }
+
+        System.out.println("Program continues after handling exceptions.");
+    }
+}
+~~~
+<img width="304" height="186" alt="image" src="https://github.com/user-attachments/assets/240e2f95-d732-4f43-846d-37675444ffbe" />
+
+## Code21
+~~~
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18 || age > 25) {
+            throw new InvalidAgeException("Age must be between 18 and 25.");
+        } else {
+            System. out.println("Valid age. Student allowed.");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int age = 16;  
+
+        try {
+            checkAge(age);
+        } catch (InvalidAgeException e) {
+            System. out.println("Exception caught: " + e.getMessage());
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+~~~
+<img width="313" height="73" alt="image" src="https://github.com/user-attachments/assets/4d31a2f5-c9b6-4967-b2fc-f786c11749eb" />
 
